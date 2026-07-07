@@ -1,14 +1,17 @@
 @import url(droparea.css);
 
-input, textarea, select {
+input,
+textarea,
+select {
     appearance: none;
     width: 100%;
-    border: .5rem;
-    border: 1px solid var(--stroke-default);
+    border-radius: .5rem;
+    border: 2px solid transparent;
+    outline: 1px solid var(--stroke-default);
 
     padding: .75rem 1rem;
 
-    font: var(--text);
+    font: var(--text)
 }
 
 label {
@@ -19,33 +22,53 @@ label {
     margin-bottom: .25rem;
 }
 
-input:focus, select:focus, textarea:focus, input[type="date"]:focus-within {
+input:focus,
+select:focus,
+textarea:focus,
+input[type="date"]:focus-within {
     outline: .25rem solid var(--surface-secondary);
-    border: .125rem solid var(--stoke-highlight);
+    border-color: var(--stroke-highlight);
     outline-offset: .1px;
 }
 
 input[type="date"] {
     position: relative;
+
     &::-webkit-calendar-picker-indicator {
-        display: none;
+        opacity: 0;
     }
 
     &::before {
         content: "";
         position: absolute;
-        background: url(../../assets/images/calendar-03.svg)
-        center/contain;
+        background: url(../../images/icons/calendar-03.svg) center/contain;
         right: 1rem;
         width: 1.25rem;
         height: 1.25rem;
 
         top: 50%;
         transform: translateY(-50%);
-        }
+    }
 }
 
 select {
-    background: url(../../assets/images/arrow-down-01.svg)
-    no-repeat calc(100% - 1rem);
+    background: url(../../images/icons/arrow-down-01.svg) no-repeat calc(100% - 1rem);
+}
+
+.address .flex {
+    gap: 1.25rem;
+}
+
+.input-wrapper:has([disabled]) {
+    opacity: .5;
+}
+
+input {
+    &[disabled] {
+        background-color: var(--surface-disabled);
+
+        border: 1px solid var(--stroke-default);
+
+        color: var(--text-primary);
+    }
 }
